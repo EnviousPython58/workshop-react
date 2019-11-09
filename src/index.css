@@ -1,5 +1,16 @@
+:root{
+  --dark:#222;
+  --grey-acent:#F5F5F5;
+  --blue:#2e66e7;
+}
 body {
   margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--blue);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -11,3 +22,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.autocomplete{
+    display: flex;
+    max-width: 520px;
+    margin: 50px auto;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .autocomplete__search {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    width: 100%;
+    height: 38px;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #2e66e7;
+    border: 1px solid #2e66e7;
+    border-radius: 5px;
+    outline: none;
+    position: relative;
+    transition: all 0.25s linear;
+  }
+  
+  .autocomplete__search:focus {
+    border: 1px solid #2654be;
+  }
+
+  .autocomplete__list{
+    background: white;
+    color: inherit;
+    position: absolute;
+    bottom: -3.5em;
+    width: 100%;
+    box-sizing: inherit;
+    border-radius: 5px;
+    outline: none;
+    transition: all .4s;
+    /* padding: 1em; */
+  }
+
+  .autocomplete__link{
+    padding: 1em;
+    border-radius: inherit;
+    cursor: pointer;
+  }
+  .autocomplete__link:hover{
+    background: var(--grey-acent);
+
+  }
+  
