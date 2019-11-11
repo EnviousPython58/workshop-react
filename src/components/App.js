@@ -1,23 +1,31 @@
 import React,{Component} from 'react'
 import AutoComplete  from './AutoComplete'
 import ListField from "./ListField";
-import list from '../data/data'
 import {searchingFor} from '../helpers'
 class App extends Component{
     constructor(props){
         super(props)
         this.state ={
-            pokemonList:list,
+            pokemonList:[],
+            pokemonStorage:[],
             text:'',
             active:false
         }
    
     }
+    componentDidMount(){
+        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=40')
+        .then((response) => response.json())
+        .then((data) => this.setState({pokemonStorage:data.results,pokemonList:data.results}));
+        
+        
+    }
     handleOpen = (active)=>{
         this.setState({active})
     }
     handleTextChange=(text)=>{
-        const newPokemonList= list.filter(searchingFor(text)).map(pokemon =>pokemon)      
+        const {pokemonStorage} = this.state
+        const newPokemonList= pokemonStorage.filter(searchingFor(text)).map(pokemon =>pokemon)     
         this.setState({
             text,
             pokemonList:newPokemonList
@@ -33,7 +41,7 @@ class App extends Component{
         return(
             <>
                 <AutoComplete onTextChange={this.handleTextChange} text={text} handleOpen={this.handleOpen}>
-                    <ListField handleClickPokemon={this.handleClickPokemon} isOpen={active} text={text} list ={pokemonList}/>
+                    <ListField handleClickPokemon={this.handleClickPokemon} isOpen={active} text={text} list={pokemonList}/>
                 </AutoComplete>
             </>
         )

@@ -8,10 +8,10 @@ const ListField = (props) => {
           list.length > 0 ?
           list.map(pokemon =>(
             <div className="autocomplete__link"
-             key={pokemon}
-             onClick={()=> handleClickPokemon(pokemon)}
+             key={pokemon.name}
+             onClick={()=> handleClickPokemon(pokemon.name)}
             >
-              <span>{pokemon}</span>
+              <span>{pokemon.name}</span>
             </div>
           ) )
           :
