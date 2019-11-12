@@ -67,6 +67,12 @@ code {
     padding: 1em;
     border-radius: inherit;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .autocomplete__link img{
+    object-fit: contain;
+    width: 100%;
   }
   .autocomplete__link:hover{
     background: var(--grey-acent);

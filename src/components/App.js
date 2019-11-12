@@ -14,7 +14,7 @@ class App extends Component{
    
     }
     componentDidMount(){
-        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=40')
+        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=150')
         .then((response) => response.json())
         .then((data) => this.setState({pokemonStorage:data.results,pokemonList:data.results}));
         
